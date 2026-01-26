@@ -28,9 +28,9 @@ const FusionOS = (() => {
 
     // Default apps (pulled/merged from anexo)
     const DEFAULT_APPS = [
-        { id: 'OIDUAL', name: 'OiDual System', desc: 'Protocolo de comunicação quântica.', url: 'https://kodux78k.github.io/oiDual-dip-0/', icon: 'zap', active: true, code: 'OIDUAL' },
-        { id: 'VIVI', name: 'Vivivi Core', desc: 'Visualização de fluxos de dados.', url: 'https://kodux78k.github.io/oiDual-Vivivi-1/', icon: 'activity', active: true, code: 'VIVI' },
-        { id: 'CORE', name: 'Alpha Kernel', desc: 'Núcleo de processamento di_.', url: 'https://kodux78k.github.io/oiDual-HtMagikv8/', icon: 'cpu', active: true, code: 'CORE' },
+       // { id: 'OIDUAL', name: 'OiDual System', desc: 'Protocolo de comunicação quântica.', url: 'https://kodux78k.github.io/oiDual-dip-0/', icon: 'zap', active: true, code: 'OIDUAL' },
+       // { id: 'VIVI', name: 'Vivivi Core', desc: 'Visualização de fluxos de dados.', url: 'https://kodux78k.github.io/oiDual-Vivivi-1/', icon: 'activity', active: true, code: 'VIVI' },
+       // { id: 'CORE', name: 'Alpha Kernel', desc: 'Núcleo de processamento di_.', url: 'https://kodux78k.github.io/oiDual-HtMagikv8/', icon: 'cpu', active: true, code: 'CORE' },
         { id: 'DELTA', name: 'Delta Hub', desc: 'Interface de conexão externa.', url: 'https://kodux78k.github.io/DualInfodose-VirgemHuB/index.html', icon: 'globe', active: true, code: 'DELTA' }
     ];
 
@@ -689,23 +689,30 @@ window.FusionModule.init();`;
 
         handleCommand: (cmd) => {
             const BUILTINS = {
-                'OIDUAL': { name: 'OiDual Module', url: 'https://kodux78k.github.io/oiDual-dip/' },
-                'VIVIVI': { name: 'Vivivi System', url: 'https://kodux78k.github.io/oiDual-Vivivi-1/' },
-                'DELTA': { name: 'Delta Hub', url: 'https://kodux78k.github.io/DualInfodose-VirgemHuB/index.html' },
-                'KXT': { name: 'Kxt', url: 'https://kodux78k.github.io/oiDual-diib/Kxt-di.html' },
-                'LIVROVIVO': { name: 'LivroVivo', url: 'https://kodux78k.github.io/Dual-Docs/index.html' },
-                'LV2': { name: 'LV2', url: 'https://kodux78k.github.io/info-Doc/index.html' },
-                'ASSERT': { name: 'ASSERT-HUB', url: 'https://kodux78k.github.io/DualHubjhbarros/' },
-                'APR': { name: 'APR', url: 'https://kodux78k.github.io/ASSERT-app1/index.html' },
-                'NR1035': { name: 'ASSERT NR10/35', url: 'https://kodux78k.github.io/DualHubjhbarros/PWA_TICO_Ultra/' },
-                'VWR': { name: 'dual ViweR', url: 'https://kodux78k.github.io/oiDual-VwR/index.html' },
-                'PORTAL': { name: 'PORTAL', url: 'https://kodux78k.github.io/PortalDual/index.html' },
-                'KCHAT': { name: 'Kchat', url: 'https://kodux78k.github.io/oiDual-78KChat/index.html' },
-                'KRDZ1': { name: 'dualKrdZ', url: 'https://kodux78k.github.io/oiDual-78KrdZ-v1/' },
-                'KXT2': { name: 'Dual_KxT v9', url: 'https://kodux78k.github.io/oiDual-78KxT-v9/' },
-                'KXT56': { name: '78KXat Dual', url: 'https://kodux78k.github.io/oiDual-78KxT/' },
-                'RESET': 'RESET'
-            };
+    'OIDUAL': { name: '💬 OiDual 💬', url: 'https://kodux78k.github.io/oiDual-dip/' },
+    'VIVIVI': { name: '🧬 Vivivi System 🆔', url: 'https://kodux78k.github.io/oiDual-Vivivi-1/' },
+    'DELTA': { name: '🌐 Delta Hub 🔘', url: 'https://kodux78k.github.io/DualInfodose-VirgemHuB/index.html' },
+    'KXT': { name: 'Kxt', url: 'https://kodux78k.github.io/oiDual-diib/Kxt-di.html' },
+    'LIVROVIVO': { name: 'LivroVivo', url: 'https://kodux78k.github.io/Dual-Docs/index.html' },
+    'LV2': { name: 'LV2', url: 'https://kodux78k.github.io/info-Doc/index.html' },
+    'ASSERT': { name: 'ASSERT-HUB', url: 'https://kodux78k.github.io/DualHubjhbarros/' },
+    'APR': { name: 'APR', url: 'https://kodux78k.github.io/ASSERT-app1/index.html' },
+    'NR1035': { name: 'ASSERT NR10/35', url: 'https://kodux78k.github.io/DualHubjhbarros/PWA_TICO_Ultra/' },
+    'VWR': { name: 'dual ViweR', url: 'https://kodux78k.github.io/oiDual-VwR/index.html' },
+    'PORTAL': { name: 'PORTAL', url: 'https://kodux78k.github.io/PortalDual/index.html' },
+    'KCHAT': { name: 'Kchat', url: 'https://kodux78k.github.io/oiDual-78KChat/index.html' },
+    'KRDZ1': { name: 'dualKrdZ', url: 'https://kodux78k.github.io/oiDual-78KrdZ-v1/' },
+    'KXT2': { name: 'Dual_KxT v9', url: 'https://kodux78k.github.io/oiDual-78KxT-v9/' },
+    'KXT56': { name: '78KXat Dual', url: 'https://kodux78k.github.io/oiDual-78KxT/' },
+
+    // ✦ Novas páginas integradas ao núcleo
+    'HTMGK': { name: 'Htmagik', url: 'https://kodux78k.github.io/oiDual-Htmagik-m/' },
+    'DEX': { name: 'DeX', url: 'https://kodux78k.github.io/oiDual-DeX/' },
+    'DFB': { name: 'DfB (HtMagik v8)', url: 'https://kodux78k.github.io/oiDual-HtMagikv8/' },
+    'NEBULA': { name: 'Nébula', url: 'https://kodux78k.github.io/oiDual-PxR/' },
+
+    'RESET': 'RESET'
+};
 
             if (cmd === 'RESET') {
                 localStorage.removeItem(CONFIG.key);
