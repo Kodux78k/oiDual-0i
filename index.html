@@ -1,6 +1,6 @@
 <html lang="pt-BR"><head>
   <meta charset="utf-8">
-  <title>DUAL // FUSION OS — V8 (Reactive Core)</title>
+  <title>DUAL // FUSION OS — V7 (Final Fluid)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#05070a">
@@ -10,6 +10,8 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  
 
 <style id="UNIFIED_STYLE">
 /* ========== UNIFIED ROOT / GLOBAL VARIABLES ========== */
@@ -72,16 +74,6 @@ body{
     linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
   background-size:52px 52px;
   background-position:center;
-}
-
-/* ========== NEW REACTIVE ANIMATIONS ========== */
-@keyframes softPulse {
-    0% { filter: brightness(1); text-shadow: 0 0 0 transparent; transform:translate(-50%, -50%) scale(1); }
-    50% { filter: brightness(1.4); text-shadow: 0 0 10px var(--neon-cyan); transform:translate(-50%, -50%) scale(1.02); }
-    100% { filter: brightness(1); text-shadow: 0 0 0 transparent; transform:translate(-50%, -50%) scale(1); }
-}
-.pulse-update {
-    animation: softPulse 0.4s ease-out forwards;
 }
 
 /* ========== AMBIENT BLOBS ========== */
@@ -252,7 +244,7 @@ body{
 #particles-js{position:absolute;inset:0;z-index:12; pointer-events:none}
 .svg-container{position:absolute;top:35%;left:50%;transform:translate(-50%,-50%);width:160px;height:160px;z-index:-1; pointer-events:none}
 .svg-container object{width:100%;height:100%}
-.top-info{position:fixed;top:28px;left:50%;transform:translate(-50%,-50%);z-index:3;background:rgba(0,0,0,0.35);padding:8px 12px;border-radius:12px;font-size:0.69em;backdrop-filter:blur(6px);pointer-events:none; cursor:pointer;}
+.top-info{position:fixed;top:28px;left:50%;transform:translate(-50%,-50%);z-index:3;background:rgba(0,0,0,0.35);padding:8px 12px;border-radius:12px;font-size:0.69em;backdrop-filter:blur(6px);pointer-events:none}
 
 /* ========== RESPONSE AREA ========== */
 .response-container{
@@ -396,14 +388,325 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
   .svg-container{width:120px;height:120px}
 }
 
-</style>
+/* ========== TEXT BEAUTY PATCH (V3) ========== */
+.flow-text p{ text-wrap: pretty; line-height:1.65; letter-spacing:.01em; margin:.65rem 0; hyphens:auto }
+.flow-text .kv-head{ font-weight:800; letter-spacing:.02em; margin:1.2rem 0 .4rem }
+.span-paren{ padding:.05rem .35rem; border-radius:.55rem; border:1px solid color-mix(in oklab, var(--ink) 16%, transparent); color: color-mix(in oklab, var(--ink) 92%, white); background: color-mix(in oklab, var(--txt-card) 86%, transparent) }
+.chip, .chip-btn{ display:inline-grid; place-items:center; padding:.25rem .6rem; border-radius:999px; background:var(--chip-bg); color:#000; font-weight:700; letter-spacing:.02em; box-shadow:0 2px 10px rgba(0,0,0,.35); cursor:pointer; user-select:none }
+.q-card{ background: var(--txt-card); border:1px solid color-mix(in oklab, var(--ink) 16%, transparent); box-shadow: 0 6px 24px rgba(0,0,0,.25), inset 0 0 0 1px color-mix(in oklab, var(--ink) 16%, transparent); border-radius:14px; padding:.85rem 1rem; margin:.9rem 0; display:grid; grid-template-columns:auto 1fr; gap:.65rem; align-items:start }
+.q-card .q-ico{ inline-size:1.65rem; block-size:1.65rem; border-radius:50%; display:grid; place-items:center; font-weight:800; color:#000; background:var(--chip-bg) }
+.q-card .q-body{ line-height:1.55 }
+.list-card{ position:relative }
+.list-card .copy-badge{ position:absolute; top:.35rem; right:.35rem; font-size:.8rem; padding:.2rem .45rem; border-radius:999px; background: color-mix(in oklab, #fff 12%, var(--txt-card)); border:1px solid color-mix(in oklab, var(--ink) 16%, transparent); color: var(--ink); opacity:.65; transition:.2s; user-select:none }
+.list-card:hover .copy-badge{ opacity:1 }
+.raw-html-card{ background: var(--txt-card); border:1px dashed color-mix(in oklab, var(--ink) 16%, transparent); border-radius:14px; padding:.85rem 1rem; margin:.9rem 0 }
+.raw-html-card .raw-note{ color: color-mix(in oklab, var(--ink) 62%, transparent); font-size:.85em; margin-bottom:.35rem }
 
-</head>
+/* ========== LIST BEAUTY V2 ========= */
+.list-card{ background:var(--list-bg, color-mix(in oklab, var(--panel) 90%, black)); border-radius:var(--list-radius, 16px); box-shadow:var(--list-shadow, 0 6px 24px rgba(0,0,0,.25), inset 0 0 0 1px color-mix(in oklab, var(--ink) 16%, transparent)); border:1px solid var(--list-border, color-mix(in oklab, var(--ink) 16%, transparent)); padding:clamp(.6rem,.9rem,1rem); margin:.85rem 0; }
+.list-card ul, .list-card ol{ margin:.25rem 0; padding:0; list-style:none; }
+.list-card li{ display:grid; grid-template-columns:auto 1fr; gap:.65rem; align-items:start; padding:.35rem .25rem; }
+.list-card li > ul, .list-card li > ol{ margin-top:.35rem; margin-left:1.85rem; }
+
+/* OL numbering */
+.list-card ol.ol-neo{ counter-reset:item; }
+.list-card ol.ol-neo li{ counter-increment:item; }
+.list-card ol.ol-neo li::before{
+  content:counters(item, ".");
+  inline-size:auto; min-inline-size: var(--list-marker-size, 1.65rem);
+  block-size: var(--list-marker-size, 1.65rem);
+  padding:0 .55rem; display:grid; place-items:center;
+  font-weight:700; font-variant-numeric: tabular-nums;
+  border-radius:12px;
+  background:linear-gradient(42deg, var(--grad-a), var(--grad-b));
+  color:#000; box-shadow:0 2px 10px rgba(0,0,0,.35);
+}
+.list-card ol.ol-neo ol{ counter-reset:item; }
+
+/* UL diamonds & dash capsule */
+.list-card ul.ul-neo:not(.style-dash):not([data-bullet="dash"]) > li::before{
+  content:"";
+  inline-size:.9rem; block-size:.9rem; border-radius:8px;
+  background:linear-gradient(42deg, var(--grad-a), var(--grad-b));
+  box-shadow:0 1px 6px rgba(0,0,0,.35), 0 0 0 1px color-mix(in oklab, #fff 14%, transparent);
+  translate:0 .15rem;
+}
+.list-card ul.ul-neo.style-dash > li::before,
+.list-card ul.ul-neo[data-bullet="dash"] > li::before{
+  content: attr(data-marker, "–");
+  display:inline-grid; place-items:center;
+  inline-size:auto; min-inline-size:1.35rem; block-size:1.35rem;
+  padding:0 .6rem; border-radius:999px; font-weight:700; letter-spacing:.02em;
+  background:linear-gradient(42deg, var(--grad-a), var(--grad-b)); color:#000; box-shadow:0 2px 10px rgba(0,0,0,.35);
+}
+
+/* ascii card */
+.ascii-card{ background:var(--list-bg); border-radius:calc(var(--list-radius, 16px) + 2px); border:1px solid var(--list-border); box-shadow:var(--list-shadow), 0 0 0 1px color-mix(in oklab, var(--grad-b) 20%, transparent); margin:1rem 0; overflow:auto; }
+.ascii-card pre{ margin:0; padding:1rem 1.1rem; line-height:1.35; font:500 13.5px/1.35 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; white-space:pre; tab-size:2; }
+.ascii-card .ascii-cap{ padding:.55rem .9rem .6rem; border-top:1px dashed var(--list-border); color:var(--list-muted, color-mix(in oklab, var(--ink) 62%, transparent)); font-size:.85em; }
+
+</style>
+<!-- ========== UNIFIED SCRIPT (single mutation server) ========== -->
+<script id="UNIFIED_BEAUTY_SCRIPT">
+(() => {
+  'use strict';
+  if (window.__UNIFIED_TEXT_LIST_BEAUTY__) return;
+  window.__UNIFIED_TEXT_LIST_BEAUTY__ = true;
+
+  /* ----------------- small utils ----------------- */
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const esc = (s = '') => String(s).replace(/[&<>'"]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+
+  /* ----------------- TEXT BEAUTY V3 logic ----------------- */
+  const processInline = (root = document) => {
+    const targets = $$('p, li, h1, h2, h3, h4, h5, h6', root).filter(n => !n.closest('pre, code, .no-beauty'));
+    const rxKV = /(^|\s)([A-Za-zÀ-ÿ0-9_]+):(?=\s|$)/g;
+    const rxParen = /\(([^\n)]+)\)/g;
+    const rxChip  = /\[\[([^\[\]]+)\]\]|\[([^\[\]]+)\]/g;
+
+    for (const el of targets) {
+      if (el.dataset.inlineProcessed === '1') continue;
+      el.dataset.inlineProcessed = '1';
+      const html = el.innerHTML;
+      if (/<pre|<code|contenteditable/i.test(html)) continue;
+      let out = html;
+      out = out.replace(rxKV, (m, sp, key) => `${sp}<strong class="kv-key">${key}:</strong>`);
+      out = out.replace(rxParen, (m, inside) => `<span class="span-paren">(${inside})</span>`);
+      out = out.replace(rxChip, (m, dbl, sgl) => {
+        const label = (dbl || sgl || '').trim();
+        return `<span class="${dbl ? 'chip-btn' : 'chip'}" data-chip="${esc(label)}">${esc(label)}</span>`;
+      });
+      el.innerHTML = out;
+    }
+  };
+
+  const processQuestions = (root = document) => {
+    const paras = $$('p', root).filter(n => !n.closest('.q-card, pre, code, .no-beauty'));
+    for (const p of paras) {
+      try {
+        const txt = (p.innerText || '').trim();
+        if (txt.endsWith('?') && !p.dataset.qProcessed) {
+          p.dataset.qProcessed = '1';
+          const wrap = document.createElement('div'); wrap.className = 'q-card';
+          wrap.innerHTML = `<div class="q-ico">?</div><div class="q-body">${esc(txt)}</div>`;
+          p.replaceWith(wrap);
+        }
+      } catch (err) { /* silent */ }
+    }
+  };
+
+  const beautifyFlow = (root = document) => {
+    const container = root.querySelector('.flow-text') || root;
+    $$('p', container).forEach(p => {
+      try {
+        const t = (p.innerText || '').trim();
+        if (/^[^:\n]{3,}:\s*$/.test(t)) p.classList.add('kv-head');
+        if (t.length > 600 && t.includes('. ')) {
+          const mark = t.indexOf('. ', Math.floor(t.length / 2));
+          if (mark > 0) {
+            const a = t.slice(0, mark + 1), b = t.slice(mark + 1);
+            const p2 = p.cloneNode(); p2.textContent = b.trim();
+            p.textContent = a.trim();
+            p.insertAdjacentElement('afterend', p2);
+          }
+        }
+      } catch (err) { /* silent */ }
+    });
+  };
+
+  const enableCopyLists = (root = document) => {
+    const lists = $$('.list-card', root);
+    for (const card of lists) {
+      if (card.dataset.copyAttached === '1') continue;
+      card.dataset.copyAttached = '1';
+      const badge = document.createElement('div');
+      badge.className = 'copy-badge'; badge.textContent = 'copiar';
+      card.appendChild(badge);
+      card.addEventListener('click', e => {
+        if (e.target.closest('a,button,.chip,.chip-btn')) return;
+        const txt = Array.from(card.querySelectorAll('li')).map(li => li.innerText.trim()).filter(Boolean).join('\n');
+        if (!txt) return;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(() => {
+            badge.textContent = 'copiado!';
+            setTimeout(() => badge.textContent = 'copiar', 1200);
+          }).catch(() => {
+            badge.textContent = 'erro'; setTimeout(() => badge.textContent = 'copiar', 1200);
+          });
+        } else {
+          // fallback
+          const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); badge.textContent = 'copiado!'; } catch (err) { badge.textContent = 'erro'; }
+          ta.remove(); setTimeout(() => badge.textContent = 'copiar', 1200);
+        }
+      }, { passive: true });
+    }
+  };
+
+  const renderRawHTML = (root = document) => {
+    // code fence transform
+    $$('pre code', root).forEach(code => {
+      const cls = (code.className || '').toLowerCase();
+      if (cls.includes('language-html-raw') || cls.includes('lang-html-raw')) {
+        const raw = code.textContent || '';
+        const box = document.createElement('div'); box.className = 'raw-html-card';
+        box.innerHTML = `<div class="raw-note">HTML/SVG renderizado a partir de bloco <code>html-raw</code></div>`;
+        const slot = document.createElement('div'); slot.className = 'raw-slot';
+        slot.innerHTML = raw; box.appendChild(slot);
+        const pre = code.closest('pre'); if (pre) pre.replaceWith(box);
+      }
+    });
+
+    $$('div[data-raw-html]', root).forEach(div => {
+      try {
+        const raw = div.textContent || '';
+        const box = document.createElement('div'); box.className = 'raw-html-card';
+        const slot = document.createElement('div'); slot.className = 'raw-slot';
+        slot.innerHTML = raw; box.appendChild(slot); div.replaceWith(box);
+      } catch (err) { /* silent */ }
+    });
+  };
+
+  /* ----------------- LIST/ASCII V2 logic ----------------- */
+  const wrapLists = (root = document) => {
+    const lists = $$('ul,ol', root).filter(el => {
+      if (el.closest('nav,menu,.no-beauty,.editor,.toolbar')) return false;
+      if (el.classList.contains('ul-neo') || el.classList.contains('ol-neo')) return false;
+      return true;
+    });
+    for (const el of lists) {
+      const isOL = el.tagName === 'OL';
+      el.classList.add(isOL ? 'ol-neo' : 'ul-neo');
+      if (!el.parentElement.classList.contains('list-card')) {
+        const wrap = document.createElement('div'); wrap.className = 'list-card';
+        el.replaceWith(wrap); wrap.appendChild(el);
+      }
+    }
+  };
+
+  const asciiScore = (t = '') => {
+    const box = /[─│┌┐└┘╭╮╰╯═╬╠╣╦╩]+/g, grid = /[-_=+*#\\/|]{3,}/g;
+    const L = String(t).split('\n'); let h = 0;
+    for (const ln of L) { if (box.test(ln) || grid.test(ln) || ln.trim().startsWith('> ')) h++; }
+    return h >= Math.max(2, Math.ceil(L.length * 0.2));
+  };
+
+  const enhanceASCII = (root = document) => {
+    const cand = new Set([...$$('pre', root), ...$$('code.language-text, code[class*="language-plaintext"]', root)]);
+    $$('p', root).forEach(p => { const x = p.innerText || ''; if (x.includes('\n') && asciiScore(x)) cand.add(p); });
+    for (const el of cand) {
+      if (el.closest('.ascii-card,.no-beauty')) continue;
+      const txt = (el.innerText || '').trim(); if (!asciiScore(txt)) continue;
+      const fig = document.createElement('figure'); fig.className = 'ascii-card';
+      const pre = document.createElement('pre'); pre.textContent = txt; fig.appendChild(pre);
+      if (!el.closest('pre')) { const fc = document.createElement('figcaption'); fc.className = 'ascii-cap'; fc.textContent = 'ASCII • renderizado em bloco'; fig.appendChild(fc); }
+      el.replaceWith(fig);
+    }
+  };
+
+  const applyDashCapsuleByAttr = (root = document) => {
+    // maintainer hook — we purposely do not force style changes
+    // leaves ul.ul-neo as-is unless author adds classes/attrs
+  };
+
+  /* ----------------- central run orchestration ----------------- */
+  const runAll = (ctx = document) => {
+    try {
+      // list & ascii may wrap nodes that later require inline processing -> run lists first
+      wrapLists(ctx);
+      processInline(ctx);
+      processQuestions(ctx);
+      beautifyFlow(ctx);
+      enableCopyLists(ctx);
+      renderRawHTML(ctx);
+      enhanceASCII(ctx);
+      applyDashCapsuleByAttr(ctx);
+    } catch (err) {
+      // fail-safe: log minimal info to console without breaking host
+      if (window.DEBUG_UNIFIED_BEAUTY) console.warn('unified-beauty error', err);
+    }
+  };
+
+  /* ----------------- single MutationObserver server ----------------- */
+  const observeOptions = { childList: true, subtree: true };
+  const observer = new MutationObserver(mutations => {
+    // collect nodes to process (dedupe roots)
+    const roots = new Set();
+    for (const m of mutations) {
+      if (m.addedNodes && m.addedNodes.length) {
+        for (const n of m.addedNodes) {
+          if (n.nodeType === 1) roots.add(n);
+        }
+      }
+      // if attributes changed in large apps, re-run whole doc cautiously
+      if (m.type === 'attributes') roots.add(document);
+    }
+    // process each root (small heuristic)
+    for (const root of roots) {
+      try { runAll(root); } catch (e) { /* swallow */ }
+    }
+  });
+
+  const startObserver = () => {
+    observer.observe(document.body, observeOptions);
+    // heuristics: also re-run on window focus (useful for SPA navigations)
+    window.addEventListener('focus', () => runAll(document), { passive: true });
+  };
+
+  /* ----------------- chip delegation + quick edit toggle ----------------- */
+  let EDIT_ON = false;
+  const toggleEdit = () => {
+    EDIT_ON = !EDIT_ON;
+    document.body.toggleAttribute('data-edit', EDIT_ON);
+    const host = document.getElementById('CONTENT') || document.querySelector('main, article, .render, .reader, body');
+    if (host) host.contentEditable = EDIT_ON ? 'plaintext-only' : 'false';
+  };
+  document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'e') { e.preventDefault(); toggleEdit(); }
+  });
+
+  document.addEventListener('click', e => {
+    const chip = e.target.closest('.chip, .chip-btn');
+    if (chip) {
+      const label = chip.dataset.chip || chip.textContent.trim();
+      const ev = new CustomEvent('chip:click', { detail: { label, source: 'unified-beauty' } });
+      document.dispatchEvent(ev);
+    }
+  }, { passive: true });
+
+  /* ----------------- boot sequence ----------------- */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => { runAll(document); startObserver(); });
+  } else {
+    runAll(document); startObserver();
+  }
+
+  // for external tooling: expose a safe API
+  window.UNIFIED_BEAUTY = {
+    run: runAll,
+    observe: startObserver,
+    disconnect: () => observer.disconnect()
+  };
+})();
+</script>
+<!-- ============ /LIST/ASCII BEAUTY PATCH — V2 ============ -->
+</style>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="apple-touch-icon" href="icon-192.png"></head>
 <body>
 
+  <!-- Cinematic Elements <div class="svg-container">
+    <object data="3D_logo_Dual_Infodose_9.svg" type="image/svg+xml"></object>
+  </div>-->
+  
   <div id="snap-zone"></div>
   <div class="ambient-light"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
   <div id="particles-js"><canvas class="particles-js-canvas-el"></canvas></div>
+
+  
 
   <div class="top-info" id="topInfo">
     <span id="displayUser">Dual: —</span> · <span id="displayInfodose">Infodose: —</span>
@@ -425,10 +728,13 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
           <div class="time-display" id="clockTime">00:00</div>
           <span class="status-led">ONLINE</span>
         </div>
+        <!-- Button visible only in HUD mode -->
         <button class="hud-menu-btn" id="hudMenuBtn" title="Menu Rápido"><i data-lucide="menu"></i></button>
       </div>
       
+      <!-- Trigger visible only on Orb Hover -->
       <div class="orb-menu-trigger" id="orbMenuTrigger" title="Menu Rápido">●●●</div>
+      <!-- Drag Handle for HUD -->
       <div class="drag-handle"></div>
 
       <div class="small-preview" id="smallPreview" title="Gerenciar Chaves">
@@ -438,10 +744,12 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
       </div>
 
       <div class="card-body" id="cardBody">
+        <!-- Main Input User -->
         <div class="input-wrapper stagger-item">
           <input type="text" class="cyber-input" id="inputUser" placeholder="Identifique-se..." autocomplete="off">
         </div>
 
+        <!-- Section 1: ASCII Activation -->
         <div class="activation-wrap stagger-item">
           <div class="activation-toggle" onclick="toggleSection('activationCard')">
             <div style="display:flex;align-items:center;gap:8px">
@@ -466,13 +774,14 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
           </div>
         </div>
 
+        <!-- Section 2: System & Neural (Config) - Embedded in Card -->
         <div class="activation-wrap stagger-item">
             <div class="activation-toggle" onclick="toggleSection('systemCard')">
                 <div style="display:flex;align-items:center;gap:8px">
                   <div style="width:10px;height:10px;border-radius:99px;background:var(--neon-purple)"></div>
                   <strong style="letter-spacing:1px;font-size:0.9rem">SYSTEM &amp; NEURAL</strong>
                 </div>
-                <div style="margin-left:auto;font-size:0.82rem;color:rgba(255,255,255,0.6)">REACTIVE</div>
+                <div style="margin-left:auto;font-size:0.82rem;color:rgba(255,255,255,0.6)">CONFIG</div>
             </div>
             <div id="systemCard" class="activation-card activation-hidden">
                 <div class="col">
@@ -515,7 +824,7 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
                         </div>
                    </div>
 
-                   <button id="saveSystemBtn" class="trigger-btn" style="margin-top:12px;background:var(--neon-cyan);color:#000;border:none;font-weight:700">SALVAR (MANUAL)</button>
+                   <button id="saveSystemBtn" class="trigger-btn" style="margin-top:12px;background:var(--neon-cyan);color:#000;border:none;font-weight:700">SALVAR CONFIGURAÇÃO</button>
                 </div>
             </div>
         </div>
@@ -529,6 +838,7 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
             </div>
         </div>
 
+        
       </div>
 
     </div>
@@ -536,6 +846,7 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
 
   <div class="toaster-wrap" id="toasterWrap"></div>
 
+  <!-- KEYS MANAGER MODAL -->
   <div id="keysModal" class="modal-overlay" aria-hidden="true">
     <div class="keys-card" role="dialog">
       <div class="keys-header">
@@ -571,6 +882,7 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
     </div>
   </div>
 
+  <!-- VAULT UNLOCK MODAL -->
   <div id="vaultModal" class="modal-overlay" aria-hidden="true">
     <div class="keys-card">
       <div class="vault-icon"><i data-lucide="lock" style="width:24px;height:24px"></i></div>
@@ -598,6 +910,7 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
           <svg viewBox="0 0 24 24" width="20"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="4" x2="12" y2="20"></line></svg>
         </button>
         <button id="toggleBtn" class="control-btn toggle-button" title="Check Connection &amp; Training">
+          <!-- Toggle Icon (Power/Signal hybrid) -->
           <svg viewBox="0 0 24 24" width="20" height="20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
             <line x1="12" y1="2" x2="12" y2="12"></line>
@@ -799,18 +1112,20 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
         STATE.keys = parsed.data.keys || [];
         STATE.user = parsed.data.user || 'Convidado';
         
-        // --- REACTIVE BRIDGE ---
-        // Se houver uma chave ativa no cofre, sincroniza com o FusionEngine
         const active = STATE.keys.find(k=>k.active);
         if(active && active.token) {
-           FusionEngine.set('apiKey', active.token);
+           localStorage.setItem('di_apiKey', active.token);
+           if(typeof apiKey !== 'undefined') apiKey = active.token;
         }
         
         if(STATE.user !== 'Convidado') {
+           localStorage.setItem('di_userName', STATE.user);
+           if(typeof userName !== 'undefined') userName = STATE.user;
+           if(document.getElementById('userNameInput')) document.getElementById('userNameInput').value = STATE.user;
            if(document.getElementById('inputUser')) document.getElementById('inputUser').value = STATE.user;
-           updateInterface(STATE.user);
         }
 
+        updateInterface(STATE.user);
         renderKeysList();
       }
     }
@@ -881,10 +1196,9 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
       if(!name){ showToaster('Nome obrigatório','error'); return; }
       const newKey = { id: Date.now().toString(36), name, token, webhook, active: STATE.keys.length===0 };
       STATE.keys.push(newKey);
-      
-      // Auto-activate bridge to reactive engine if it's the first key
       if(newKey.active && newKey.token) {
-         FusionEngine.set('apiKey', newKey.token);
+        localStorage.setItem('di_apiKey', newKey.token);
+        if(typeof apiKey !== 'undefined') apiKey = newKey.token;
       }
       saveData(); renderKeysList(); updateInterface(STATE.user);
       els.keyName.value=''; els.keyToken.value=''; els.keyWebhook.value='';
@@ -905,7 +1219,8 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
         if(k.active) activatedToken = k.token;
       });
       if(activatedToken) {
-        FusionEngine.set('apiKey', activatedToken);
+        localStorage.setItem('di_apiKey', activatedToken);
+        if(typeof apiKey !== 'undefined') apiKey = activatedToken;
         if(document.getElementById('apiKeyInput')) document.getElementById('apiKeyInput').value = activatedToken;
         showToaster('Chave sincronizada com o Chat.', 'success');
       }
@@ -923,12 +1238,9 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
       try {
         const decrypted = await CRYPTO.decrypt(STATE.encryptedData, pass);
         SESSION_PASSWORD = pass; STATE.keys = decrypted.keys; STATE.user = decrypted.user;
-        
         const active = STATE.keys.find(k=>k.active);
-        if(active && active.token) { 
-            FusionEngine.set('apiKey', active.token); 
-        }
-        
+        if(active && active.token) { localStorage.setItem('di_apiKey', active.token); if(typeof apiKey !== 'undefined') apiKey = active.token; }
+        if(STATE.user) { localStorage.setItem('di_userName', STATE.user); if(typeof userName !== 'undefined') userName = STATE.user; }
         els.vaultModal.style.display='none'; els.keysModal.style.display='flex'; els.vaultPass.value='';
         renderKeysList(); updateSecurityUI(); showToaster('Cofre destrancado.', 'success');
       } catch(e) { showToaster('Senha incorreta.', 'error'); }
@@ -1195,8 +1507,9 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
     // Logic Init
     els.input.addEventListener('input', (e)=>{ 
        STATE.user=e.target.value; 
-       updateInterface(e.target.value); 
-       saveData(); 
+       localStorage.setItem('di_userName', STATE.user); 
+       if(typeof userName !== 'undefined') userName=STATE.user;
+       updateInterface(e.target.value); saveData(); 
     });
     
     // INITIAL LOAD
@@ -1205,256 +1518,79 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
         els.avatarTgt.classList.add('shown'); 
         loadData(); 
         loadUIState(); 
-        // FusionEngine is now handled in its own script block
+        updateChatUI();
     }, 100);
     setInterval(()=>{ els.clock.innerText = new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}); },1000);
   </script>
 
   <script>
-    /**
-     * FUSION ENGINE (Reactive Store)
-     * Centraliza estado e reage automaticamente a mudanças.
-     */
-    const FusionEngine = {
-        state: {
-            apiKey: '',
-            infodoseName: '',
-            modelName: 'nvidia/nemotron-3-nano-30b-a3b:free',
-            assistantEnabled: false,
-            trainingActive: false,
-            zenMode: false,
-            trainingText: '',
-            trainingFileName: ''
-        },
-        
-        // Loads from localStorage + Defaults
-        init() {
-            this.state.apiKey = localStorage.getItem('di_apiKey') || '';
-            this.state.infodoseName = localStorage.getItem('di_infodoseName') || '';
-            this.state.modelName = localStorage.getItem('di_modelName') || this.state.modelName;
-            this.state.assistantEnabled = (localStorage.getItem('di_assistantEnabled') === '1');
-            this.state.trainingActive = (localStorage.getItem('di_trainingActive') !== '0'); 
-            this.state.trainingText = localStorage.getItem('di_trainingText') || '';
-            this.state.trainingFileName = localStorage.getItem('di_trainingFileName') || '';
-            this.state.zenMode = document.body.classList.contains('zen-mode');
-
-            this.render(); // Initial UI Sync
-            this.bindEvents();
-            console.log("Fusion Engine v8: Reactive Core Active");
-        },
-
-        // Update State & Trigger Reactivity
-        set(key, value) {
-            this.state[key] = value;
-            
-            // Persist
-            if(key === 'apiKey') localStorage.setItem('di_apiKey', value);
-            if(key === 'infodoseName') localStorage.setItem('di_infodoseName', value);
-            if(key === 'modelName') localStorage.setItem('di_modelName', value);
-            if(key === 'assistantEnabled') localStorage.setItem('di_assistantEnabled', value ? '1' : '0');
-            if(key === 'trainingActive') localStorage.setItem('di_trainingActive', value ? '1' : '0');
-            if(key === 'trainingText') localStorage.setItem('di_trainingText', value);
-            if(key === 'trainingFileName') localStorage.setItem('di_trainingFileName', value);
-
-            // Special Effects
-            if(key === 'zenMode') {
-                 if(value) {
-                     document.body.classList.add('zen-mode');
-                     document.getElementById('mantra-toggle').classList.add('collapsed');
-                 } else {
-                     document.body.classList.remove('zen-mode');
-                     document.getElementById('mantra-toggle').classList.remove('collapsed');
-                 }
-                 // save UI state handles this in main script, but we sync here
-            }
-
-            this.render();
-            this.triggerVisualPulse();
-        },
-
-        // Sync DOM with State
-        render() {
-             // Top Info
-             const iEl = document.getElementById('displayInfodose');
-             if(iEl) iEl.innerText = 'Infodose: ' + (this.state.infodoseName || '—');
-
-             // Inputs (if not focused to avoid cursor jumping, or force update if needed)
-             const setVal = (id, v) => {
-                 const el = document.getElementById(id);
-                 if(el && document.activeElement !== el) el.value = v;
-             };
-             
-             setVal('apiKeyInput', this.state.apiKey);
-             setVal('modelInput', this.state.modelName);
-             setVal('infodoseNameInput', this.state.infodoseName);
-             setVal('modelSelect', this.state.modelName); // Select box
-
-             // Toggles
-             const setCheck = (id, v) => { const el = document.getElementById(id); if(el) el.checked = v; };
-             setCheck('assistantActiveCheckbox', this.state.assistantEnabled);
-             setCheck('trainingActiveCheckbox', this.state.trainingActive);
-             setCheck('zenModeCheckbox', this.state.zenMode);
-
-             // Labels
-             const tLabel = document.getElementById('trainingFileName');
-             if(tLabel) tLabel.innerText = this.state.trainingFileName || 'Vazio';
-
-             // Main Toggle Button Logic
-             const btn = document.getElementById('toggleBtn');
-             if(btn) {
-                if(this.state.assistantEnabled) {
-                    btn.classList.add('active');
-                    btn.title = "Assistant ON";
-                } else {
-                    btn.classList.remove('active');
-                    btn.title = "Assistant OFF";
-                }
-             }
-        },
-
-        // Auto-bind inputs to state (Two-way binding feeling)
-        bindEvents() {
-            const bind = (id, key, type='text') => {
-                const el = document.getElementById(id);
-                if(!el) return;
-                if(type === 'text' || type === 'select') {
-                    el.addEventListener('input', (e) => this.set(key, e.target.value));
-                } else if (type === 'checkbox') {
-                    el.addEventListener('change', (e) => this.set(key, e.target.checked));
-                }
-            };
-
-            bind('apiKeyInput', 'apiKey');
-            bind('infodoseNameInput', 'infodoseName');
-            bind('modelInput', 'modelName');
-            bind('modelSelect', 'modelName', 'select');
-            bind('assistantActiveCheckbox', 'assistantEnabled', 'checkbox');
-            bind('trainingActiveCheckbox', 'trainingActive', 'checkbox');
-            bind('zenModeCheckbox', 'zenMode', 'checkbox');
-
-            // Special: Main Toggle Button
-            document.getElementById('toggleBtn')?.addEventListener('click', () => {
-                this.set('assistantEnabled', !this.state.assistantEnabled);
-                showToaster(this.state.assistantEnabled ? 'Assistant ON' : 'Assistant OFF', 'default');
-            });
-            
-            // Visual trigger on Top Info click
-            document.getElementById('topInfo')?.addEventListener('click', () => {
-                this.triggerVisualPulse();
-                this.render(); // Force re-sync
-            });
-        },
-
-        triggerVisualPulse() {
-            const bar = document.getElementById('topInfo');
-            if(bar) {
-                bar.classList.remove('pulse-update');
-                void bar.offsetWidth; // trigger reflow
-                bar.classList.add('pulse-update');
-            }
-        },
-        
-        // Helper for AI Calls to get current snapshot
-        getSnapshot() {
-            return { ...this.state };
-        }
-    };
-
-    // Global Chat Logic (Consuming the Engine)
     const API_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
     const TEMPERATURE = 0.2;
+
+    let training = localStorage.getItem('di_trainingText') || '';
+    let trainingFileName = localStorage.getItem('di_trainingFileName') || '';
+    let assistantEnabled = (localStorage.getItem('di_assistantEnabled') === '1');
+    let trainingActive = (localStorage.getItem('di_trainingActive') !== '0'); 
     let conversation = [];
     let pages = [], currentPage = 0, autoAdvance = true;
+
+    // Configs
+    let apiKey = localStorage.getItem('di_apiKey') || '';
+    let modelName = localStorage.getItem('di_modelName') || 'nvidia/nemotron-3-nano-30b-a3b:free';
+    let userName = localStorage.getItem('di_userName') || '';
+    let infodoseName = localStorage.getItem('di_infodoseName') || '';
     const CRYSTAL_KEY = 'di_cristalizados';
+
+// === Model Selector ===
+const modelSelect = document.getElementById('modelSelect');
+
+// carregar modelo salvo
+const savedModel = localStorage.getItem('di_modelName');
+if (savedModel) {
+  modelName = savedModel;
+  if (modelSelect) modelSelect.value = savedModel;
+}
+
+// escutar mudança
+modelSelect?.addEventListener('change', e => {
+  modelName = e.target.value;
+  localStorage.setItem('di_modelName', modelName);
+  showToaster?.(`Modelo ativo: ${modelName}`, 'default');
+});
 
     const createEl = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html) e.innerHTML = html; return e; };
 
-    // --- PATCH JS: substituir splitBlocks + renderPaginatedResponse + speakPage/changePage/showLoading ---
-
-    /* simples parser markdown leve */
-    function mdToHtml(md){
-        if(!md) return '';
-        md = md.replace(/```([^`]*)```/gs, (_, code) => '<pre><code>' + escapeHtml(code) + '</code></pre>');
-        md = md.replace(/`([^`]+)`/g, (_, c) => '<code>' + escapeHtml(c) + '</code>');
-        md = md.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
-        md = md.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-        md = md.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-        md = md.replace(/(^|\n)[\-\*]\s+(.+?)(?=\n|$)/g, (_, pre, item) => pre + '<li>' + item + '</li>');
-        md = md.replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>');
-        const paras = md.split(/\n{2,}/).map(p => p.trim()).filter(Boolean);
-        return paras.map(p => '<p>' + p.replace(/\n/g,'<br>') + '</p>').join('');
+    function updateChatUI() {
+       const uEl = document.getElementById('displayUser');
+       const iEl = document.getElementById('displayInfodose');
+       if(uEl) uEl.innerText = 'User: ' + (userName || '—');
+       if(iEl) iEl.innerText = 'Infodose: ' + (infodoseName || '—');
+       
+       // Settings Inputs
+       if(document.getElementById('apiKeyInput')) document.getElementById('apiKeyInput').value = apiKey;
+       if(document.getElementById('modelInput')) document.getElementById('modelInput').value = modelName;
+       if(document.getElementById('infodoseNameInput')) document.getElementById('infodoseNameInput').value = infodoseName;
+       
+       // Toggles
+       if(document.getElementById('assistantActiveCheckbox')) document.getElementById('assistantActiveCheckbox').checked = assistantEnabled;
+       if(document.getElementById('trainingActiveCheckbox')) document.getElementById('trainingActiveCheckbox').checked = trainingActive;
+       
+       // Update Chat Toggle Button Visual
+       updateToggleBtnVisual();
+    }
+    
+    function updateToggleBtnVisual() {
+        const btn = els.toggleBtn;
+        if(assistantEnabled) {
+            btn.classList.add('active');
+            btn.title = "Assistant ON";
+        } else {
+            btn.classList.remove('active');
+            btn.title = "Assistant OFF";
+        }
     }
 
-    const splitBlocks = text => {
-        if (!text || !text.trim()) return [['Sem conteúdo.','','']];
-        let paras = text.split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean);
-        if (paras.length < 3 || paras.length % 3 !== 0) {
-            const sens = text.match(/[^\.!\?]+[\.!\?]+/g) || [text];
-            paras = sens.map(s=>s.trim()).filter(Boolean);
-        }
-        const groups = [];
-        for (let i=0;i<paras.length;i+=3) groups.push(paras.slice(i,i+3));
-        return groups;
-    };
-
-    const renderPaginatedResponse = text => {
-        try { speechSynthesis.cancel(); } catch(e){}
-        autoAdvance = true;
-        const respEl = document.getElementById('response');
-        Array.from(respEl.querySelectorAll('.page')).forEach(p => { if (!p.classList.contains('initial')) p.remove(); });
-        pages = [];
-        const groups = splitBlocks(text);
-        const titles = ['🎁 Recompensa Inicial','👁️ Exploração e Curiosidade','⚡ Antecipação Vibracional'];
-
-        groups.forEach((tris, gi) => {
-            const page = createEl('div', gi===0 ? 'page active' : 'page');
-            tris.forEach((body, j) => {
-                const cls = j===0 ? 'intro' : j===1 ? 'middle' : 'ending';
-                const htmlBody = mdToHtml(body);
-                const b = createEl('div','response-block '+cls, `<h3>${titles[j]}</h3><div class="block-body">${htmlBody}</div>`);
-                const meta = createEl('div','meta');
-                const crystalBtn = createEl('button','crystal-btn','✶');
-                crystalBtn.title = 'Cristalizar';
-                crystalBtn.addEventListener('click', (ev)=>{
-                    ev.stopPropagation();
-                    cristalizar({ title: titles[j], content: body });
-                    crystalBtn.innerText = '✓'; setTimeout(()=> crystalBtn.innerText = '✶', 1200);
-                });
-                meta.appendChild(crystalBtn);
-                b.appendChild(meta);
-                b.dataset.state = '';
-                b.addEventListener('click', (ev) => {
-                    if (ev.target.closest('.meta')) return;
-                    const alreadySpoken = b.dataset.state === 'spoken';
-                    if (!alreadySpoken) {
-                        try { speechSynthesis.cancel(); } catch(e){}
-                        const textToSpeak = b.querySelector('.block-body') ? b.querySelector('.block-body').innerText : body;
-                        speakText(textToSpeak);
-                        b.classList.add('clicked'); b.dataset.state = 'spoken';
-                    } else {
-                        b.classList.add('expanded'); b.dataset.state = '';
-                        if (!FusionEngine.state.assistantEnabled) FusionEngine.set('assistantEnabled', true);
-                        const blockText = `${titles[j]}\n\n${body}`;
-                        showLoading('Pulso em Expansão...');
-                        speakText('Pulso em Expansão...');
-                        conversation.push({ role:'user', content: blockText });
-                        callAI();
-                    }
-                });
-                page.appendChild(b);
-            });
-            page.appendChild(createEl('p','footer-text',`<em>Do seu jeito. <strong>Sempre</strong> único. <strong>Sempre</strong> seu.</em>`));
-            const controls = respEl.querySelector('.response-controls');
-            if (controls && controls.parentNode) respEl.insertBefore(page, controls);
-            else respEl.appendChild(page);
-            pages.push(page);
-        });
-        currentPage = 0;
-        const pi = document.getElementById('pageIndicator');
-        if (pi) pi.textContent = `1 / ${pages.length}`;
-        speakPage(0);
-    };
-
+    // TTS Logic ... (Same as before)
     const speakText = (txt, onend)=> {
       if (!txt) { if (onend) onend(); return; }
       const u = new SpeechSynthesisUtterance(txt);
@@ -1464,52 +1600,168 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
       speechSynthesis.speak(u);
     };
 
-    const speakPage = i => {
-        const page = pages[i]; if (!page) return;
-        const body = Array.from(page.querySelectorAll('.block-body')).map(n => n.innerText).join(' ');
-        speakText(body, () => {
-            if (!autoAdvance) return;
-            if (i < pages.length - 1) { changePage(1); speakPage(i+1); } else { speakText('Sempre único, sempre seu.'); }
-        });
-    };
+   /* === PATCH JS: substituir splitBlocks + renderPaginatedResponse + speakPage/changePage/showLoading === */
 
-    const changePage = offset => {
-        const np = currentPage + offset; if (np<0 || np>=pages.length) return;
-        if (pages[currentPage]) pages[currentPage].classList.remove('active');
-        if (pages[np]) pages[np].classList.add('active');
-        currentPage = np;
-        const pi = document.getElementById('pageIndicator');
-        if (pi) pi.textContent = `${currentPage+1} / ${pages.length}`;
-    };
+/* simples parser markdown leve (bold, italic, inline code, links, codeblocks, lists) */
+function mdToHtml(md){
+  if(!md) return '';
+  // code block ``` ``` 
+  md = md.replace(/```([^`]*)```/gs, function(_, code){ return '<pre><code>' + escapeHtml(code) + '</code></pre>'; });
+  // inline code `code`
+  md = md.replace(/`([^`]+)`/g, function(_, c){ return '<code>' + escapeHtml(c) + '</code>'; });
+  // links [text](url)
+  md = md.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+  // bold **text**
+  md = md.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  // italic *text*
+  md = md.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  // unordered lists (- or *)
+  md = md.replace(/(^|\n)[\-\*]\s+(.+?)(?=\n|$)/g, function(_, pre, item){ return pre + '<li>' + item + '</li>'; });
+  md = md.replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>');
+  // paragraphs: remaining single newlines -> <br>, double newlines -> separate paragraphs
+  const paras = md.split(/\n{2,}/).map(p => p.trim()).filter(Boolean);
+  return paras.map(p => '<p>' + p.replace(/\n/g,'<br>') + '</p>').join('');
+}
 
-    const showLoading = msg => {
-        const respEl = document.getElementById('response');
-        const controls = respEl.querySelector('.response-controls');
-        respEl.querySelectorAll('.page').forEach(p => { if(!p.classList.contains('initial')) p.remove(); });
-        const page = createEl('div','page active'); page.appendChild(createEl('p','footer-text',msg));
-        if (controls && controls.parentNode) respEl.insertBefore(page, controls);
-        else respEl.appendChild(page);
-        pages = [page];
-        currentPage = 0;
-        const pi = document.getElementById('pageIndicator');
-        if (pi) pi.textContent = '…';
-    };
+/* divide texto em grupos de 3 blocos (fallback para sentenças) */
+const splitBlocks = text => {
+  if (!text || !text.trim()) return [['Sem conteúdo.','','']];
+  let paras = text.split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean);
+  // se muitos pequenos parágrafos e não múltiplo de 3, quebra por sentenças
+  if (paras.length < 3 || paras.length % 3 !== 0) {
+    const sens = text.match(/[^\.!\?]+[\.!\?]+/g) || [text];
+    paras = sens.map(s=>s.trim()).filter(Boolean);
+  }
+  const groups = [];
+  for (let i=0;i<paras.length;i+=3) groups.push(paras.slice(i,i+3));
+  return groups;
+};
+
+const renderPaginatedResponse = text => {
+  // cancel TTS ongoing
+  try { speechSynthesis.cancel(); } catch(e){}
+  autoAdvance = true;
+  const respEl = document.getElementById('response');
+  // remove previous generated pages but keep the controls and initial page if present
+  Array.from(respEl.querySelectorAll('.page')).forEach(p => {
+    if (!p.classList.contains('initial')) p.remove();
+  });
+  pages = [];
+  const groups = splitBlocks(text);
+  const controls = respEl.querySelector('.response-controls');
+  const titles = ['🎁 Recompensa Inicial','👁️ Exploração e Curiosidade','⚡ Antecipação Vibracional'];
+
+  groups.forEach((tris, gi) => {
+    const page = createEl('div', gi===0 ? 'page active' : 'page');
+    // content container
+    tris.forEach((body, j) => {
+      const cls = j===0 ? 'intro' : j===1 ? 'middle' : 'ending';
+      // convert markdown-lite to html inside block-body
+      const htmlBody = mdToHtml(body);
+      const b = createEl('div','response-block '+cls, `<h3>${titles[j]}</h3><div class="block-body">${htmlBody}</div>`);
+      const meta = createEl('div','meta');
+      const crystalBtn = createEl('button','crystal-btn','✶');
+      crystalBtn.title = 'Cristalizar';
+      crystalBtn.addEventListener('click', (ev)=>{
+        ev.stopPropagation();
+        cristalizar({ title: titles[j], content: body });
+        crystalBtn.innerText = '✓'; setTimeout(()=> crystalBtn.innerText = '✶', 1200);
+      });
+      meta.appendChild(crystalBtn);
+      b.appendChild(meta);
+
+      // state & click behavior (TTS / expand -> trigger AI)
+      b.dataset.state = '';
+      b.addEventListener('click', (ev) => {
+        // prevent inner meta buttons from toggling
+        if (ev.target.closest('.meta')) return;
+        const alreadySpoken = b.dataset.state === 'spoken';
+        if (!alreadySpoken) {
+          try { speechSynthesis.cancel(); } catch(e){}
+          // speak only visible text (collapse tags removed)
+          const textToSpeak = b.querySelector('.block-body') ? b.querySelector('.block-body').innerText : body;
+          speakText(textToSpeak);
+          b.classList.add('clicked'); b.dataset.state = 'spoken';
+        } else {
+          // expand and call AI
+          b.classList.add('expanded'); b.dataset.state = '';
+          if (!assistantEnabled) {
+            assistantEnabled = true; localStorage.setItem('di_assistantEnabled','1');
+            updateToggleBtnVisual();
+            if (training && trainingActive) conversation.unshift({ role:'system', content: training });
+          }
+          const blockText = `${titles[j]}\n\n${body}`;
+          showLoading('Pulso em Expansão...');
+          speakText('Pulso em Expansão...');
+          conversation.push({ role:'user', content: blockText });
+          callAI();
+        }
+      });
+
+      page.appendChild(b);
+    });
+
+    page.appendChild(createEl('p','footer-text',`<em>Do seu jeito. <strong>Sempre</strong> único. <strong>Sempre</strong> seu.</em>`));
+    // insert new page before controls (so controls always at bottom)
+    if (controls && controls.parentNode) respEl.insertBefore(page, controls);
+    else respEl.appendChild(page);
+    pages.push(page);
+  });
+
+  currentPage = 0;
+  const pi = document.getElementById('pageIndicator');
+  if (pi) pi.textContent = `1 / ${pages.length}`;
+  // start speaking first page
+  speakPage(0);
+};
+
+const speakPage = i => {
+  const page = pages[i]; if (!page) return;
+  const body = Array.from(page.querySelectorAll('.block-body')).map(n => n.innerText).join(' ');
+  speakText(body, () => {
+    if (!autoAdvance) return;
+    if (i < pages.length - 1) { changePage(1); speakPage(i+1); } else { speakText('Sempre único, sempre seu.'); }
+  });
+};
+
+const changePage = offset => {
+  const np = currentPage + offset; if (np<0 || np>=pages.length) return;
+  if (pages[currentPage]) pages[currentPage].classList.remove('active');
+  if (pages[np]) pages[np].classList.add('active');
+  currentPage = np;
+  const pi = document.getElementById('pageIndicator');
+  if (pi) pi.textContent = `${currentPage+1} / ${pages.length}`;
+};
+
+const showLoading = msg => {
+  const respEl = document.getElementById('response');
+  const controls = respEl.querySelector('.response-controls');
+  respEl.querySelectorAll('.page').forEach(p => { if(!p.classList.contains('initial')) p.remove(); });
+  const page = createEl('div','page active'); page.appendChild(createEl('p','footer-text',msg));
+  if (controls && controls.parentNode) respEl.insertBefore(page, controls);
+  else respEl.appendChild(page);
+  pages = [page];
+  currentPage = 0;
+  const pi = document.getElementById('pageIndicator');
+  if (pi) pi.textContent = '…';
+};
 
     async function callAI() {
-      const cfg = FusionEngine.getSnapshot();
-      if (!cfg.apiKey) {
+      apiKey = localStorage.getItem('di_apiKey') || apiKey;
+
+      if (!apiKey) {
         alert('Nenhuma API Key ativa! Ative uma chave no Card (Cofre) ou no Painel.');
         return;
       }
-      const bodyObj = { model: cfg.modelName, messages: conversation.slice(), temperature: TEMPERATURE };
+      const bodyObj = { model: modelName, messages: conversation.slice(), temperature: TEMPERATURE };
       const messagesToSend = [];
-      if (cfg.assistantEnabled && cfg.trainingActive && cfg.trainingText) messagesToSend.push({ role:'system', content: cfg.trainingText });
+      if (assistantEnabled && trainingActive && training) messagesToSend.push({ role:'system', content: training });
       conversation.forEach(m => { if (m.role !== 'system') messagesToSend.push(m); });
       bodyObj.messages = messagesToSend;
 
       try {
         const resp = await fetch(API_ENDPOINT, {
-          method:'POST', headers:{ 'Authorization':`Bearer ${cfg.apiKey}`, 'Content-Type':'application/json' },
+          method:'POST', headers:{ 'Authorization':`Bearer ${apiKey}`, 'Content-Type':'application/json' },
           body: JSON.stringify(bodyObj)
         });
         if (!resp.ok) throw new Error('Erro API: ' + resp.status);
@@ -1519,7 +1771,7 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
         renderPaginatedResponse(answer);
       } catch (err) {
         console.error(err);
-        const errorMsg = 'Falha na conexão. Verifique se a chave está ativa.';
+        const errorMsg = 'Falha na conexão. Verifique se a chave está ativa no Card.';
         conversation.push({ role:'assistant', content: errorMsg });
         renderPaginatedResponse(errorMsg);
       }
@@ -1534,21 +1786,27 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
       input.value = '';
       speechSynthesis.cancel(); speakText('');
 
-      const cfg = FusionEngine.getSnapshot();
-
       if (raw.toLowerCase().includes('oi dual')) {
-        FusionEngine.set('assistantEnabled', true);
+        assistantEnabled = true; localStorage.setItem('di_assistantEnabled','1');
+        updateToggleBtnVisual();
         showLoading('Conectando Dual Infodose...');
-        if (cfg.trainingText && cfg.trainingActive) conversation.unshift({ role:'system', content: cfg.trainingText });
+        if (training && trainingActive) conversation.unshift({ role:'system', content: training });
       } else { showLoading('Processando...'); }
       conversation.push({ role:'user', content: raw });
       callAI();
     }
     
+    // Quick Toggle Action
+    els.toggleBtn.addEventListener('click', () => {
+        assistantEnabled = !assistantEnabled;
+        localStorage.setItem('di_assistantEnabled', assistantEnabled ? '1' : '0');
+        showToaster(assistantEnabled ? 'Assistant ON (Fetch Ativo)' : 'Assistant OFF (Fetch Desativado)', assistantEnabled ? 'success' : 'default');
+        updateChatUI();
+    });
+
     function cristalizar({ title, content }) {
       const list = JSON.parse(localStorage.getItem(CRYSTAL_KEY) || '[]');
-      const cfg = FusionEngine.getSnapshot();
-      list.unshift({ id: Date.now(), title, content, user: document.getElementById('inputUser').value, infodose: cfg.infodoseName, at: new Date().toISOString() });
+      list.unshift({ id: Date.now(), title, content, user: userName, infodose: infodoseName, at: new Date().toISOString() });
       localStorage.setItem(CRYSTAL_KEY, JSON.stringify(list)); refreshCrystalList();
     }
     function refreshCrystalList() {
@@ -1568,12 +1826,9 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
       });
     }
 
-    // --- SETUP EVENTS ---
+    // --- SETUP CHAT UI EVENTS ---
     document.addEventListener('DOMContentLoaded', async () => {
       speechSynthesis.onvoiceschanged = () => { window._vozes = speechSynthesis.getVoices(); };
-
-      // Engine Start
-      FusionEngine.init();
 
       try {
         particlesJS('particles-js',{ particles:{ number:{value:24},color:{value:['#0ff','#f0f']}, shape:{type:'circle'},opacity:{value:0.4},size:{value:2.4}, move:{enable:true,speed:1.5} }, retina_detect:true });
@@ -1584,10 +1839,42 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
       document.querySelector('[data-action="prev"]').addEventListener('click', () => changePage(-1));
       document.querySelector('[data-action="next"]').addEventListener('click', () => changePage(1));
 
-      // Button "Save Manual" just closes the modal now, since state is reactive
       document.getElementById('saveSystemBtn').addEventListener('click', () => {
+         infodoseName = document.getElementById('infodoseNameInput').value.trim();
+         assistantEnabled = document.getElementById('assistantActiveCheckbox').checked;
+         trainingActive = document.getElementById('trainingActiveCheckbox').checked;
+         
+         const newKey = document.getElementById('apiKeyInput').value.trim();
+         const newModel = document.getElementById('modelInput').value.trim();
+         
+         if(newKey) {
+             apiKey = newKey;
+             localStorage.setItem('di_apiKey', apiKey);
+             if(typeof STATE !== 'undefined') {
+                 const active = STATE.keys.find(k=>k.active);
+                 if(active) { active.token = newKey; saveData(); }
+             }
+         }
+         
+         modelName = newModel || modelName;
+         localStorage.setItem('di_modelName', modelName);
+
+         const zen = document.getElementById('zenModeCheckbox').checked;
+         if(zen) { 
+             document.body.classList.add('zen-mode');
+             document.getElementById('mantra-toggle').classList.add('collapsed');
+         } else {
+             document.body.classList.remove('zen-mode');
+             document.getElementById('mantra-toggle').classList.remove('collapsed');
+         }
+         saveUIState(); 
+
+         localStorage.setItem('di_infodoseName', infodoseName);
+         localStorage.setItem('di_assistantEnabled', assistantEnabled?'1':'0'); localStorage.setItem('di_trainingActive', trainingActive?'1':'0');
+         
+         updateChatUI();
          toggleSection('systemCard', false);
-         showToaster('Configurações Persistidas', 'success');
+         showToaster('Configurações Salvas', 'success');
       });
 
       // Crystal
@@ -1601,55 +1888,86 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
       });
       document.getElementById('clearAllCrystal').addEventListener('click', ()=>{ localStorage.removeItem(CRYSTAL_KEY); refreshCrystalList(); });
 
-      // Copy/Paste Utils
+      updateChatUI();
+
+      // --- ADDED: missing button handlers ---
+      function getAllResponseText() {
+        const blocks = Array.from(document.querySelectorAll('.response-block p')).map(p=>p.innerText.trim()).filter(Boolean);
+        if(blocks.length) return blocks.join('\n\n');
+        const resp = document.getElementById('response');
+        return resp ? resp.innerText.trim() : '';
+      }
       const copyBtn = document.querySelector('.control-btn.copy-button');
       if (copyBtn) copyBtn.addEventListener('click', async () => {
         try {
-          const text = document.getElementById('response').innerText.trim();
+          const text = getAllResponseText();
           await navigator.clipboard.writeText(text);
           showToaster('Texto copiado', 'success');
-        } catch (e) { showToaster('Falha ao copiar', 'error'); }
+        } catch (e) { showToaster('Falha ao copiar', 'error'); console.error(e); }
       });
       const pasteBtn = document.querySelector('.control-btn.paste-button');
       if (pasteBtn) pasteBtn.addEventListener('click', async () => {
         try {
           const txt = await navigator.clipboard.readText();
           const ui = document.getElementById('userInput');
-          if (ui) { ui.value = txt; ui.focus(); showToaster('Conteúdo colado', 'success'); }
-        } catch (e) { showToaster('Falha ao colar', 'error'); }
+          if (ui) { ui.value = txt; ui.focus(); showToaster('Conteúdo colado no campo', 'success'); }
+        } catch (e) { showToaster('Falha ao colar (permissão negada?)', 'error'); console.error(e); }
+      });
+      const copyAct = document.getElementById('copyActBtn');
+      if (copyAct) copyAct.addEventListener('click', async () => {
+        try {
+          const txt = document.getElementById('actPre').innerText;
+          await navigator.clipboard.writeText(txt);
+          showToaster('Ativação copiada', 'success');
+        } catch(e){ showToaster('Erro ao copiar ativação', 'error'); console.error(e); }
+      });
+      const downloadAct = document.getElementById('downloadActBtn');
+      if (downloadAct) downloadAct.addEventListener('click', async () => {
+        try {
+          const node = document.getElementById('actPre');
+          const canvas = await html2canvas(node, { backgroundColor: null, scale: 2 });
+          canvas.toBlob(blob => {
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'ativacao.png'; a.click();
+            URL.revokeObjectURL(a.href);
+          });
+        } catch(e){ showToaster('Erro ao gerar PNG', 'error'); console.error(e); }
       });
 
-      // Training Upload
+      // Training import/export
       const trainingInput = document.getElementById('trainingUpload');
       const exportTrainingBtn = document.getElementById('exportTrainingBtn');
+      const trainingNameEl = document.getElementById('trainingFileName');
+
       if (trainingInput) {
         trainingInput.addEventListener('change', async (ev) => {
           const f = ev.target.files && ev.target.files[0];
           if (!f) return;
           const txt = await f.text();
-          FusionEngine.set('trainingText', txt);
-          FusionEngine.set('trainingFileName', f.name);
-          showToaster('Treinamento carregado e salvo', 'success');
+          training = txt;
+          trainingFileName = f.name;
+          localStorage.setItem('di_trainingText', training);
+          localStorage.setItem('di_trainingFileName', trainingFileName);
+          if (trainingNameEl) trainingNameEl.innerText = trainingFileName;
+          showToaster('Treinamento importado', 'success');
         });
       }
       if (exportTrainingBtn) {
         exportTrainingBtn.addEventListener('click', () => {
-          const cfg = FusionEngine.getSnapshot();
-          if (!cfg.trainingText) { showToaster('Nenhum treinamento', 'error'); return; }
-          const b = new Blob([cfg.trainingText], { type: 'text/plain' });
-          const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = (cfg.trainingFileName||'training.txt'); a.click();
+          if (!training) { showToaster('Nenhum treinamento para exportar', 'error'); return; }
+          const b = new Blob([training], { type: 'text/plain' });
+          const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = (trainingFileName||'training.txt'); a.click();
         });
       }
 
-      // Keys Export
+      // Keys export/import
       const exportKeysBtn = document.getElementById('exportKeysBtn');
+      const importKeysBtn = document.getElementById('importKeysBtn');
+      const importFileInput = document.getElementById('importFileInput');
+
       if (exportKeysBtn) exportKeysBtn.addEventListener('click', () => {
         const b = new Blob([JSON.stringify(STATE.keys || [], null, 2)], { type: 'application/json' });
         const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'keys.json'; a.click();
       });
-      // Keys Import
-      const importKeysBtn = document.getElementById('importKeysBtn');
-      const importFileInput = document.getElementById('importFileInput');
       if (importKeysBtn && importFileInput) {
         importKeysBtn.addEventListener('click', () => importFileInput.click());
         importFileInput.addEventListener('change', async (ev) => {
@@ -1661,12 +1979,13 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
             if (!Array.isArray(parsed)) throw new Error('Formato inválido');
             STATE.keys = parsed;
             saveData(); renderKeysList(); showToaster('Chaves importadas', 'success');
-          } catch (e) { showToaster('Erro ao importar', 'error'); }
+          } catch (e) { showToaster('Erro ao importar chaves', 'error'); console.error(e); }
         });
       }
+
     });
 
-    // Mantra Toggle
+    // Mantra
     const mantraBtn = document.getElementById('mantra-toggle');
     const mantraText = document.getElementById('mantra-text');
     let mantraCollapsed = false;
@@ -1682,6 +2001,11 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
     });
   </script>
 
+
+
+
+
+
 <div class="wrap">
   <div class="content">
     <iframe id="frame" src="https://kodux78k.github.io/oiDual-idHome/" title="Dual Infodose frame"></iframe>
@@ -1691,9 +2015,13 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
             <button class="symbol-button" data-url="https://kodux78k.github.io/oiDual-idHome/index.html">⌂</button>
     <button class="symbol-button" data-url="https://kodux78k.github.io/oiDual-Vivivi-1/index.html">◊</button>
     <button class="symbol-button" data-url="https://kodux78k.github.io/DualInfodose-VirgemHuB/index.html">○</button>
+
+
   </div>
+
+
   
-  <button class="lock-button" src="./index.html"></button>
+<button class="lock-button" src="./index.html"></button>
 
   <div class="controls" role="region" aria-label="Controles">
     <input id="uploadHTML" type="file" accept=".html" style="display:none">
@@ -1714,8 +2042,10 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
     <div id="pulsos"></div>
   </div>
 
-</div>
+  <!-- <p class="footer">Do seu jeito. <strong>Sempre</strong> único. <strong>Sempre</strong> seu.</p>
+</div> --!>
 
+<!-- lightweight web component modal for remote/local pages -->
 <script>
   class MyFrameLoader extends HTMLElement {
     constructor(){
@@ -1773,10 +2103,11 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
     el.className = 'debug';
     el.textContent = '◉ ' + msg;
     pulsos.prepend(el);
+    // auto-trim
     while(pulsos.children.length > 80) pulsos.removeChild(pulsos.lastChild);
   }
 
-  // load page into main iframe
+  // load page into main iframe (with small fade)
   function loadPage(url){
     frame.style.opacity = 0;
     setTimeout(()=> {
@@ -1794,15 +2125,18 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
     });
     b.addEventListener('contextmenu', e=>{
       e.preventDefault();
-      logMistico('Editar símbolo: ' + (b.textContent || '•'));
+      const url = b.dataset.url || 'about:blank';
+      const label = b.textContent || '•';
+      logMistico(`Editar símbolo: ${label} -> ${url} (use editor separado)`);
     });
   });
 
-  // upload local HTML
+  // upload local HTML into modal viewer
   uploadBtn.addEventListener('click', ()=> uploadInput.click());
   uploadInput.addEventListener('change', e=>{
     const f = e.target.files && e.target.files[0];
     if (!f) return;
+    if (!f.name.endsWith('.html')) return alert('Selecione um arquivo .html');
     const r = new FileReader();
     r.onload = ev=>{
       const blob = new Blob([ev.target.result], {type:'text/html'});
@@ -1815,7 +2149,7 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
     r.readAsText(f);
   });
 
-  // remote component
+  // remote component modal
   remoteBtn.addEventListener('click', ()=>{
     const url = prompt('URL do componente remoto:');
     if (!url) return;
@@ -1828,6 +2162,7 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
   // decoder
   toggleDecoderBtn.addEventListener('click', ()=>{
     decoderBox.style.display = decoderBox.style.display === 'none' ? 'block' : 'none';
+    decoderBox.setAttribute('aria-hidden', decoderBox.style.display === 'none');
   });
   closeDecoder.addEventListener('click', ()=> decoderBox.style.display = 'none');
   decodeBtn.addEventListener('click', ()=>{
@@ -1839,29 +2174,45 @@ iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
       modal.src = dest;
       document.body.appendChild(modal);
       decoderBox.style.display = 'none';
-      logMistico('Selo válidado: ' + code);
+      logMistico('Selo válidado: ' + code + ' → ' + dest);
     } else {
       alert('Selo desconhecido.');
+      logMistico('Selo desconhecido: ' + code);
     }
   });
 
+  // simple postMessage integration for pulses from iframe (if desired)
   window.addEventListener('message', e=>{
     if (e.data?.type === 'iframeClick'){
-      logMistico('Pulso do iframe em ' + e.data.x + ',' + e.data.y);
+      const x = e.data.x, y = e.data.y;
+      logMistico('Pulso do iframe em ' + x + ',' + y);
+    }
+  });
+
+  // small keyboard shortcuts
+  document.addEventListener('keydown', (ev)=>{
+    if (ev.key === 't' && (ev.ctrlKey || ev.metaKey)){ // ctrl/cmd + t = toggle decoder
+      ev.preventDefault();
+      decoderBox.style.display = decoderBox.style.display === 'none' ? 'block' : 'none';
     }
   });
 
   // init
   (function init(){
+    logMistico('Dual.Infodose LITe inicializado');
+    // load saved layout (simple example)
     const last = localStorage.getItem('dual_last');
     if (last) frame.src = last;
+    // save main iframe changes
     frame.addEventListener('load', ()=> localStorage.setItem('dual_last', frame.src));
   })();
 
 })();
 </script>
 <div id="fusion-soft-layer"></div>
-<div id="navRoot"></div> 
-<script src="https://kodux78k.github.io/oiDual-0i/0RB-0S11.js"></script>
+ <div id="navRoot"></div> 
+  <script src="https://kodux78k.github.io/oiDual-0i/0RB-0S11.js"></script>
 
-</body></html>
+
+<script>if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');</script></body>
+</html>
