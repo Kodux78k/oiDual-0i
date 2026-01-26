@@ -1,6 +1,6 @@
 {
   "name": "DualInfodose App",
-  "short_name": "DualInfodose",
+  "short_name": "Dual(app)Infodose",
   "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",
