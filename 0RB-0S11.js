@@ -23,7 +23,7 @@ const FusionOS = (() => {
         fusionLayerId: 'navRoot',
         customCssRootId: 'custom-css-root',
         storageKeyLegacy: 'fusion_os_v5_ultimate',
-        voice: true
+        voice: false,
     };
 
     // Default apps (pulled/merged from anexo)
