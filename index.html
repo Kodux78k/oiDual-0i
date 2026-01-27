@@ -367,7 +367,8 @@ body.zen-mode .response-container, body.zen-mode .input-container, body.zen-mode
 .bar-meta{display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(255,255,255,0.4);font-family:var(--font-code)}
 
 /* symbolbar / controls / iframe area */
-.wrap{width:100%;height:100%;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.wrap{width:100%;height:100%;min-height:100dvh;position:relative;overflow:auto;display:flex;
+  flex-direction:column; -webkit-overflow-scrolling: touch;}
 .content{flex:1;position:relative;display:flex}
 iframe#frame{width:100%;height:100%;border:0;transition:opacity .4s;opacity:1}
 .symbol-bar{position:fixed;right:8px;top:33%;
