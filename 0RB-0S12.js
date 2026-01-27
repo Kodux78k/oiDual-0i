@@ -222,7 +222,9 @@ const FusionOS = (() => {
                 </div>
                 <button class="orb-trigger" id="orb-trigger" aria-label="Toggle Fusion OS"><div class="orb-ring"></div><div class="orb-core"></div></button>
                 <div id="fusion-exit-ctrl" class="fixed top-8 left-1/2 -translate-x-1/2 hidden z-[10020]">
-                    <button onclick="FusionOS.exitFusion()" class="bg-black/80 backdrop-blur-xl border border-red-500/30 text-red-500 px-8 py-3 rounded-full text-[10px] font-black tracking-[0.3em] hover:bg-red-600 hover:text-white hover:border-red-600 transition-all shadow-[0_0_30px_rgba(220,38,38,0.2)]">ENCERRAR FUSÃO</button>
+                    <button onclick="FusionOS.exitFusion()" class="bg-black/25 backdrop-blur-xl border border-red-500/30 text-red-500 px-4 py-2 rounded-full text-[9px] font-black tracking-[0.1em] hover:bg-red-600 hover:text-white hover:border-red-600 transition-all shadow-[0_0_30px_rgba(220,38,38,0.2)]">
+                        ◌
+                    </button>
                 </div>
             `;
             document.body.appendChild(container);
