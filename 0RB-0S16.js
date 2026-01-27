@@ -727,6 +727,9 @@ window.FusionModule.init();`;
                 'DEX': { name: 'DeX', url: 'https://kodux78k.github.io/oiDual-DeX/' },
                 'DFB': { name: 'DfB (HtMagik v8)', url: 'https://kodux78k.github.io/oiDual-HtMagikv8/' },
                 'NEBULA': { name: 'Nébula', url: 'https://kodux78k.github.io/oiDual-PxR/' },
+                'TST': { name: 'TST', url: 'https://kodux78k.github.io/oiDual-tst/' },
+                'TST0': { name: 'TST0', url: 'https://kodux78k.github.io/oiDual-tst0/' },
+
                 'RESET': 'RESET'
             };
 
