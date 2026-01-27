@@ -681,6 +681,7 @@ window.FusionModule.init();`;
                 'NEBULA': { name: 'Nébula', url: 'https://kodux78k.github.io/oiDual-PxR/' },
                 'TST': { name: 'TST', url: 'https://kodux78k.github.io/oiDual-tst/' },
                 'TST0': { name: 'TST0', url: 'https://kodux78k.github.io/oiDual-tst0/' },
+                'TST1': { name: 'TST1', url: 'https://kodux78k.github.io/oiDual-tst1/' },
                 'RESET': 'RESET'
             };
 
