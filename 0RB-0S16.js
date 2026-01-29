@@ -711,7 +711,7 @@ window.FusionModule.init();`;
                 'OIDUAL': { name: '💬 OiDual 💬', url: 'https://kodux78k.github.io/oiDual-dip/' },
                 'VIVIVI': { name: '🧬 Vivivi System 🆔', url: 'https://kodux78k.github.io/oiDual-Vivivi-1/' },
                 'DELTA': { name: '🌐 Delta Hub 🔘', url: 'https://kodux78k.github.io/DualInfodose-VirgemHuB/index.html' },
-                'KXT': { name: 'Kxt', url: 'https://kodux78k.github.io/oiDual-diib/Kxt-di.html' },
+                'KXT': { name: 'Kxt', url: 'https://kodux78k.github.io/oiDual-KxT/' },
                 'LIVROVIVO': { name: 'LivroVivo', url: 'https://kodux78k.github.io/Dual-Docs/index.html' },
                 'LV2': { name: 'LV2', url: 'https://kodux78k.github.io/info-Doc/index.html' },
                 'ASSERT': { name: 'ASSERT-HUB', url: 'https://kodux78k.github.io/DualHubjhbarros/' },
@@ -730,6 +730,9 @@ window.FusionModule.init();`;
                 'TST': { name: 'TST', url: 'https://kodux78k.github.io/oiDual-tst/' },
                 'TST0': { name: 'TST0', url: 'https://kodux78k.github.io/oiDual-tst0/' },
                 'TST1': { name: 'TST1', url: 'https://kodux78k.github.io/oiDual-tst1/' },
+                'ADU': { name: 'Adega Urbana', url: 'https://kodux78k.github.io/oiDual-AdegaUrbana/' },
+                '78F': { name: 'Iframe 78frames', url: 'https://kodux78k.github.io/oiDual-78F/' },
+                
                 'RESET': 'RESET'
             };
 
