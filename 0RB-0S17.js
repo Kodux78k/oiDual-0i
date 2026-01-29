@@ -682,6 +682,9 @@ window.FusionModule.init();`;
                 'TST': { name: 'TST', url: 'https://kodux78k.github.io/oiDual-tst/' },
                 'TST0': { name: 'TST0', url: 'https://kodux78k.github.io/oiDual-tst0/' },
                 'TST1': { name: 'TST1', url: 'https://kodux78k.github.io/oiDual-tst1/' },
+                'ADU': { name: 'Adega Urbana', url: 'https://kodux78k.github.io/oiDual-AdegaUrbana/' },
+                 'Iframe': { name: 'Iframe 78frames', url: 'https://kodux78k.github.io/oiDual-78F/' },
+                
                 'RESET': 'RESET'
             };
 
