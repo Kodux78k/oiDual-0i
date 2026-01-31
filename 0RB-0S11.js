@@ -713,7 +713,13 @@ window.FusionModule.init();`;
     'DFB': { name: 'DfB (HtMagik v8)', url: 'https://kodux78k.github.io/oiDual-HtMagikv8/' },
     'NEBULA': { name: 'Nébula', url: 'https://kodux78k.github.io/oiDual-PxR/' },
     'TST1': { name: 'TST1', url: 'https://kodux78k.github.io/oiDual-tst1/' },
-    'RESET': 'RESET'
+   'KXTZ': { name: 'KxT KBllX', url: 'https://kodux78k.github.io/oiDual-KxT/' },
+'KXDI': { name: 'KxT DI', url: 'https://kodux78k.github.io/oiDual-KxT-di/' },
+'DH0':  { name: 'DH0', url: 'https://kodux78k.github.io/oiDual-H0/' },
+'START': { name: 'starT', url: 'https://kodux78k.github.io/oiDual-starT/' },
+'78K':  { name: '78K ID HOME', url: 'https://kodux78k.github.io/oiDual-idHome/' },
+'NAV':  { name: 'NAV', url: 'https://kodux78k.github.io/oiDual-infodek/' },
+                'RESET': 'RESET'
 };
 
             if (cmd === 'RESET') {
