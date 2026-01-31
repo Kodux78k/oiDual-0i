@@ -737,6 +737,7 @@ window.FusionModule.init();`;
 'DH0':  { name: 'DH0', url: 'https://kodux78k.github.io/oiDual-H0/' },
 'START': { name: 'starT', url: 'https://kodux78k.github.io/oiDual-starT/' },
 '78K':  { name: '78K ID HOME', url: 'https://kodux78k.github.io/oiDual-idHome/' },
+'NAV':  { name: 'NAV', url: 'https://kodux78k.github.io/oiDual-infodek/' },
                 'RESET': 'RESET'
             };
 
