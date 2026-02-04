@@ -690,6 +690,7 @@ window.FusionModule.init();`;
 'START': { name: 'starT', url: 'https://kodux78k.github.io/oiDual-starT/' },
 '78K':  { name: '78K ID HOME', url: 'https://kodux78k.github.io/oiDual-idHome/' },
 'NAV':  { name: 'NAV', url: 'https://kodux78k.github.io/oiDual-infodek/' },
+'VWRDI':  { name: 'VwR-di', url: 'https://kodux78k.github.io/oiDual-VwR-di/' },
                 'RESET': 'RESET'
             };
 
