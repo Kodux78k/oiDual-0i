@@ -691,6 +691,7 @@ window.FusionModule.init();`;
 '78K':  { name: '78K ID HOME', url: 'https://kodux78k.github.io/oiDual-idHome/' },
 'NAV':  { name: 'NAV', url: 'https://kodux78k.github.io/oiDual-infodek/' },
 'VWRDI':  { name: 'VwR-di', url: 'https://kodux78k.github.io/oiDual-VwR-di/' },
+'DH10':  { name: 'H0-di', url: 'https://kodux78k.github.io/oiDual-H0/DH0-10.html/' },
                 'RESET': 'RESET'
             };
 
@@ -774,5 +775,4 @@ window.FusionModule.init();`;
         }
     };
 })();
-
 FusionOS.boot();
