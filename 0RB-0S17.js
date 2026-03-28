@@ -149,9 +149,9 @@ const FusionOS = (() => {
                 transition: transform 0.36s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             }
             .orb-trigger:hover { transform: translateX(-50%) scale(1.08); }
-            .orb-core { width: 10px; height: 10px; background: #fff; border-radius: 50%; box-shadow: 0 0 18px rgba(255,255,255,0.95); transition: transform .36s, box-shadow .36s, background .36s; }
+            .orb-core0 { width: 10px; height: 10px; background: #fff; border-radius: 50%; box-shadow: 0 0 18px rgba(255,255,255,0.95); transition: transform .36s, box-shadow .36s, background .36s; }
             .orb-ring { position: absolute; width: 52px; height: 52px; border-radius: 50%; border:2px solid transparent; border-top-color: var(--orb-cyan); border-bottom-color: var(--orb-purple); animation: orb-spin 4s linear infinite; opacity: .75; transition: all .45s ease; }
-            .os-active .orb-core { background: var(--orb-cyan); box-shadow: 0 0 30px var(--orb-cyan); transform: scale(1.18); }
+            .os-active .orb-core0 { background: var(--orb-cyan); box-shadow: 0 0 30px var(--orb-cyan); transform: scale(1.18); }
             .os-active .orb-ring { animation-duration: 1.25s; opacity: 1; border-color: var(--orb-cyan); box-shadow: 0 0 20px rgba(0,242,255,0.18); }
             @keyframes orb-spin { to { transform: rotate(360deg); } }
             @keyframes shake { 0% { transform: translate(1px,1px); } 10% { transform: translate(-1px,-2px); } 100% { transform: translate(0); } }
@@ -250,7 +250,7 @@ const FusionOS = (() => {
 
                 <button class="orb-trigger" id="orb-trigger" aria-label="Toggle Fusion OS">
                     <div class="orb-ring"></div>
-                    <div class="orb-core"></div>
+                    <div class="orb-core0"></div>
                 </button>
 
                 <div id="fusion-exit-ctrl" class="fixed top-8 left-1/2 -translate-x-1/2 hidden z-[10020] fusion-exit-ctrl-wrap" role="dialog" aria-hidden="true">
